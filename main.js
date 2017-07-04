@@ -10,13 +10,21 @@ startButton.style.width = buttonWidth + "px";
 startButton.style.height = buttonHeight + "px";
 startButton.style.border = "1px solid black";
 startButton.style.position = "absolute";
+startButton.style.fontSize = "20px";
+startButton.style.backgroundColor = "#FFFFFF";
 startButton.innerHTML = "Start";
+startButton.addEventListener('mouseover', function() {
+    startButton.style.backgroundColor = "#00FF00";
+}, false);
+startButton.addEventListener('mouseout', function() {
+    startButton.style.backgroundColor = "#FFFFFF";
+}, false);
 
 var score = 0;
 var scoreboard = document.getElementById("scoreboard");
-scoreboard.style.width = buttonWidth + "px";
+scoreboard.style.width = "auto";
 scoreboard.style.height = buttonHeight + "px";
-scoreboard.style.left = canvasWidth - 2*buttonWidth + "px";
+scoreboard.style.left = canvasWidth - 2*buttonWidth - 50 + "px";
 scoreboard.style.position = "absolute";
 scoreboard.style.textAlign = "center";
 scoreboard.style.lineHeight = buttonHeight + "px";
@@ -25,6 +33,10 @@ scoreboard.style.fontSize = "32px";
 scoreboard.innerHTML = "Score: " + score;
 function incrementScore() {
     score++;
+    scoreboard.innerHTML = "Score: " + score;
+}
+function decrementScore() {
+    score--;
     scoreboard.innerHTML = "Score: " + score;
 }
 
@@ -54,8 +66,8 @@ function decrementLives() {
 var SPEED_REFERENCE = 1;
 function Circle() {
     this.radius = Math.random()*200 + 50; // Minimum: 50, Maximum: 250
-    this.outlineRadius = 500;
     this.speed = SPEED_REFERENCE;
+    this.outlineRadius = this.radius + 100 + 30*this.speed;
 
     this.minimumXPosition = this.outlineRadius;
     this.minimumYPosition = this.outlineRadius;
@@ -68,9 +80,12 @@ function Circle() {
 }
 var circle = new Circle();
 function updateGame() {
+    if (circle.outlineRadius <= circle.radius) {
+        circle.speed = SPEED_REFERENCE/2;
+    }
     if (circle.outlineRadius > 0) {
         circle.outlineRadius -= circle.speed;
-        if (circle.outlineRadius < 0) { // Fixing a negative radius.
+        if (circle.outlineRadius < 0) { // Fixing a negative radius. Late click.
             circle.outlineRadius = 0;
             decrementLives();
         }
@@ -134,7 +149,7 @@ startButton.addEventListener('click', function() { // Clicking the start button.
 function distanceBetweenTwoPoints(pointOne, pointTwo) {
     return Math.pow(pointTwo.x - pointOne.x, 2) + Math.pow(pointTwo.y - pointOne.y, 2);
 }
-canvas.addEventListener('click', function(event) {
+canvas.addEventListener('mousedown', function(event) {
     var clickX = event.pageX;
     var clickY = event.pageY;
 
@@ -149,15 +164,15 @@ canvas.addEventListener('click', function(event) {
 
     if (distanceBetweenTwoPoints(clickPoint, centerPoint) < Math.pow(circle.radius, 2)) { // Clicked inside the circle.
         if (circle.outlineRadius > circle.radius) { // Early click.
-            decrementLives();
+            decrementScore();
         }
         else { // Successful click.
-            SPEED_REFERENCE += 0.5;
+            SPEED_REFERENCE += 0.25;
             circle = new Circle();
             incrementScore();
         }
     }
     else { // Out of bounds.
-        decrementLives();
+        decrementScore();
     }
 }, false);
