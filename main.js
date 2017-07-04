@@ -20,6 +20,7 @@ scoreboard.style.left = canvasWidth - 2*buttonWidth + "px";
 scoreboard.style.position = "absolute";
 scoreboard.style.textAlign = "center";
 scoreboard.style.lineHeight = buttonHeight + "px";
+scoreboard.style.color = "white";
 scoreboard.innerHTML = "Score: " + score;
 function incrementScore() {
     score++;
@@ -34,6 +35,7 @@ livesDiv.style.left = canvasWidth - buttonWidth + "px";
 livesDiv.style.position = "absolute";
 livesDiv.style.textAlign = "center";
 livesDiv.style.lineHeight = buttonHeight + "px";
+livesDiv.style.color = "white";
 livesDiv.innerHTML = "Lives: " + numberOfLives;
 function decrementLives() {
     numberOfLives--;
@@ -87,7 +89,7 @@ function animateGame() {
     // Clear the canvas.
     context.clearRect(0, 0, canvasWidth, canvasHeight);
     // Prepare the background.
-    context.fillStyle = "#FFFFFF";
+    context.fillStyle = "#000000";
     context.fillRect(0, 0, canvasWidth, canvasHeight);
 
     // Draw the circle.
@@ -96,7 +98,7 @@ function animateGame() {
     context.closePath();
     // Fill the circle with the correct color.
     if (circle.outlineRadius > circle.radius) {
-        context.fillStyle = "#EEEEEE";
+        context.fillStyle = "#DDDDDD";
     }
     else {
         context.fillStyle = "#00FF00";
@@ -107,7 +109,7 @@ function animateGame() {
     context.beginPath();
     context.arc(circle.position.x, circle.position.y, circle.outlineRadius, 0, Math.PI*2, false);
     context.lineWidth = 1;
-    context.strokeStyle = "#000000";
+    context.strokeStyle = "#FFFFFF";
     context.stroke();
 
     // Update and animate the game.
