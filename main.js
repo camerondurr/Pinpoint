@@ -1,3 +1,9 @@
+// TODO: Add main menu.
+// TODO: Main menu should include (1) Normal Mode, (2) Hard Mode, (3) Rewards, (4) Statistics, and (5) Options.
+// TODO: Add after game report/statistics.
+// TODO: After game statistics should include (1) High Score, (2) Current Score, and (3) Number of Inaccurate Taps.
+// TODO: Statistics at the main menu should include (1) Total Number of Successful Taps, (2) Total Number of Inaccurate Taps, (3) Total Time Played, (4) High Score, and (5) Total Number of Rounds Played.
+
 var canvas = document.querySelector("#myCanvas");
 var canvasWidth = canvas.width;
 var canvasHeight = canvas.height;
@@ -73,6 +79,7 @@ function Circle() {
     this.minimumYPosition = this.outlineRadius;
     this.maximumXPosition = canvasWidth - this.outlineRadius;
     this.maximumYPosition = canvasHeight - this.outlineRadius;
+    // TODO: Fix the bug where some circles spawn partially inside the screen.
     this.position = {
         x: Math.random()*(this.maximumXPosition - this.minimumXPosition) + this.minimumXPosition,
         y: Math.random()*(this.maximumYPosition - this.minimumYPosition) + this.minimumYPosition
