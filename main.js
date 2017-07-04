@@ -21,6 +21,7 @@ scoreboard.style.position = "absolute";
 scoreboard.style.textAlign = "center";
 scoreboard.style.lineHeight = buttonHeight + "px";
 scoreboard.style.color = "white";
+scoreboard.style.fontSize = "32px";
 scoreboard.innerHTML = "Score: " + score;
 function incrementScore() {
     score++;
@@ -36,6 +37,7 @@ livesDiv.style.position = "absolute";
 livesDiv.style.textAlign = "center";
 livesDiv.style.lineHeight = buttonHeight + "px";
 livesDiv.style.color = "white";
+livesDiv.style.fontSize = "32px";
 livesDiv.innerHTML = "Lives: " + numberOfLives;
 function decrementLives() {
     numberOfLives--;
