@@ -121,15 +121,9 @@ function Circle() {
     this.radius = Math.random()*200 + 50; // Minimum: 50, Maximum: 250
     this.speed = SPEED_REFERENCE;
     this.outlineRadius = this.radius + 100 + 30*this.speed;
-
-    this.minimumXPosition = this.outlineRadius;
-    this.minimumYPosition = this.outlineRadius;
-    this.maximumXPosition = canvasWidth - this.outlineRadius;
-    this.maximumYPosition = canvasHeight - this.outlineRadius;
-    // TODO: Fix the bug where some circles spawn partially inside the screen.
     this.position = {
-        x: Math.random()*(this.maximumXPosition - this.minimumXPosition) + this.minimumXPosition,
-        y: Math.random()*(this.maximumYPosition - this.minimumYPosition) + this.minimumYPosition
+        x: Math.random()*(1325 - 100) + 100,
+        y: Math.random()*(615 - 100) + 100
     };
 }
 var circle = new Circle();
@@ -142,12 +136,8 @@ function updateGame() {
         if (circle.outlineRadius < 0) { // Fixing a negative radius. Late click.
             circle.outlineRadius = 0;
             decrementLives();
+            circle = new Circle();
         }
-    }
-    else { // Late click.
-        // TODO: Fix the bug where two lives are decremented for a late click.
-        decrementLives();
-        circle = new Circle();
     }
 }
 
