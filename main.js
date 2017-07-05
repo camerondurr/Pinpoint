@@ -1,5 +1,3 @@
-// TODO: Add main menu.
-// TODO: Main menu should include (1) Normal Mode, (2) Hard Mode, (3) Rewards, (4) Statistics, and (5) Options.
 // TODO: Add after game report/statistics.
 // TODO: After game statistics should include (1) High Score, (2) Current Score, and (3) Number of Inaccurate Taps.
 // TODO: Statistics at the main menu should include (1) Total Number of Successful Taps, (2) Total Number of Inaccurate Taps, (3) Total Time Played, (4) High Score, and (5) Total Number of Rounds Played.
@@ -11,15 +9,16 @@ var canvasHeight = canvas.height;
 var buttonWidth = 100;
 var buttonHeight = 50;
 
-var letterSpacing = 5;
+var letterSpacing = 10;
 var letterSpacingChangeSpeed = 0.05;
 var letterSpacingMaximum = 20;
-var letterSpacingMinimum = 0;
+var letterSpacingMinimum = 5;
 var title = document.getElementById("title");
 title.style.letterSpacing = letterSpacing + "px";
 title.style.top = "20%";
 title.style.marginTop = "-10px";
-title.style.width = "100%";
+title.style.width = "500px";
+title.style.marginLeft = -250 + "px";
 title.style.height = "auto";
 title.style.textAlign = "center";
 title.style.color = "#FFFFFF";
@@ -94,7 +93,7 @@ function decrementLives() {
     }
 }
 
-normalModeButton.addEventListener('click', function() {
+function mainMenuToGameTransition() {
     title.style.display = "none";
     normalModeButton.style.display = "none";
     hardModeButton.style.display = "none";
@@ -106,6 +105,14 @@ normalModeButton.addEventListener('click', function() {
     startButton.style.display = "inherit";
     scoreboard.style.display = "inherit";
     livesDiv.style.display = "inherit";
+}
+normalModeButton.addEventListener('click', function() {
+    mainMenuToGameTransition();
+    // TODO: The player should be given three lives.
+}, false);
+hardModeButton.addEventListener('click', function() {
+    mainMenuToGameTransition();
+    // TODO: The player should be given one life.
 }, false);
 
 // TODO: Fix the speed issue when the start button is pressed multiple times.
@@ -138,6 +145,7 @@ function updateGame() {
         }
     }
     else { // Late click.
+        // TODO: Fix the bug where two lives are decremented for a late click.
         decrementLives();
         circle = new Circle();
     }
