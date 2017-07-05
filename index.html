@@ -4,12 +4,21 @@
     <meta charset="UTF-8">
     <title>Pinpoint</title>
     <link href="https://fonts.googleapis.com/css?family=Reenie+Beanie|Righteous|Roboto+Condensed" rel="stylesheet">
+    <link href="styles.css" type="text/css" rel="stylesheet">
 </head>
 <body bgcolor="black">
-    <button id="startButton" style="user-select: none; font-family: 'Roboto Condensed', sans-serif;"></button>
-    <div id="scoreboard" style="font-family: 'Reenie Beanie', cursive; user-select: none;"></div>
-    <div id="lives" style="font-family: 'Reenie Beanie', cursive; user-select: none;"></div>
-    <canvas id="myCanvas" height="615px" width="1325px" style="border: 1px solid black;"></canvas>
+    <h1 id="title" style="font-family: 'Roboto Condensed', sans-serif;">Pinpoint</h1>
+    <button id="normalModeButton" class="mainMenuButton">Normal Mode</button>
+    <button id="hardModeButton" class="mainMenuButton">Hard Mode</button>
+    <button id="rewardsButton" class="mainMenuButton">Rewards</button>
+    <button id="statisticsButton" class="mainMenuButton">Statistics</button>
+    <button id="optionsButton" class="mainMenuButton">Options</button>
+
+    <button id="startButton" class="game" style="user-select: none; font-family: 'Roboto Condensed', sans-serif;"></button>
+    <div id="scoreboard" class="game" style="font-family: 'Reenie Beanie', cursive; user-select: none;"></div>
+    <div id="lives" class="game" style="font-family: 'Reenie Beanie', cursive; user-select: none;"></div>
+    <canvas id="myCanvas" class="game" height="615px" width="1325px" style="border: 1px solid black;"></canvas>
+
     <script src="main.js"></script>
 </body>
 </html>

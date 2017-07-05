@@ -11,6 +11,32 @@ var canvasHeight = canvas.height;
 var buttonWidth = 100;
 var buttonHeight = 50;
 
+var letterSpacing = 5;
+var letterSpacingChangeSpeed = 0.05;
+var letterSpacingMaximum = 20;
+var letterSpacingMinimum = 0;
+var title = document.getElementById("title");
+title.style.letterSpacing = letterSpacing + "px";
+title.style.top = "20%";
+title.style.marginTop = "-10px";
+title.style.width = "100%";
+title.style.height = "auto";
+title.style.textAlign = "center";
+title.style.color = "#FFFFFF";
+title.style.position = "absolute";
+
+var startingPoint = 30;
+var normalModeButton = document.getElementById("normalModeButton");
+normalModeButton.style.top = startingPoint + "%";
+var hardModeButton = document.getElementById("hardModeButton");
+hardModeButton.style.top = startingPoint + 10 + "%";
+var rewardsButton = document.getElementById("rewardsButton");
+rewardsButton.style.top = startingPoint + 20 + "%";
+var statisticsButton = document.getElementById("statisticsButton");
+statisticsButton.style.top = startingPoint + 30 + "%";
+var optionsButton = document.getElementById("optionsButton");
+optionsButton.style.top = startingPoint + 40 + "%";
+
 var startButton = document.getElementById("startButton");
 startButton.style.width = buttonWidth + "px";
 startButton.style.height = buttonHeight + "px";
@@ -67,6 +93,20 @@ function decrementLives() {
         livesDiv.innerHTML = "Lives: " + numberOfLives;
     }
 }
+
+normalModeButton.addEventListener('click', function() {
+    title.style.display = "none";
+    normalModeButton.style.display = "none";
+    hardModeButton.style.display = "none";
+    rewardsButton.style.display = "none";
+    statisticsButton.style.display = "none";
+    optionsButton.style.display = "none";
+
+    canvas.style.display = "inherit";
+    startButton.style.display = "inherit";
+    scoreboard.style.display = "inherit";
+    livesDiv.style.display = "inherit";
+}, false);
 
 // TODO: Fix the speed issue when the start button is pressed multiple times.
 var SPEED_REFERENCE = 1;
@@ -183,3 +223,13 @@ canvas.addEventListener('mousedown', function(event) {
         decrementScore();
     }
 }, false);
+function animateTitle() {
+    if (letterSpacing >= letterSpacingMaximum || letterSpacing <= letterSpacingMinimum) {
+        letterSpacingChangeSpeed = -letterSpacingChangeSpeed;
+    }
+    letterSpacing += letterSpacingChangeSpeed;
+
+    title.style.letterSpacing = letterSpacing + "px";
+    requestAnimationFrame(animateTitle);
+}
+animateTitle();
