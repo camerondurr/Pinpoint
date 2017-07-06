@@ -1,6 +1,7 @@
 // TODO: Add after game report/statistics.
 // TODO: After game statistics should include (1) High Score, (2) Current Score, and (3) Number of Inaccurate Taps.
 // TODO: Statistics at the main menu should include (1) Total Number of Successful Taps, (2) Total Number of Inaccurate Taps, (3) Total Time Played, (4) High Score, and (5) Total Number of Rounds Played.
+// TODO: Rewards tab at the main menu should include (1) Songs and (2) Themes.
 
 var canvas = document.querySelector("#myCanvas");
 var canvasWidth = canvas.width;
