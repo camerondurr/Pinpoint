@@ -123,8 +123,8 @@ function Circle() {
     this.speed = SPEED_REFERENCE;
     this.outlineRadius = this.radius + 100 + 30*this.speed;
     this.position = {
-        x: Math.random()*(1325 - 100) + 100,
-        y: Math.random()*(615 - 100) + 100
+        x: Math.random()*(canvasWidth - 100) + 100,
+        y: Math.random()*(canvasHeight - 100) + 100
     };
 }
 var circle = new Circle();
