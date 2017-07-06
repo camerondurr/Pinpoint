@@ -4,6 +4,7 @@
 // TODO: Rewards tab at the main menu should include (1) Songs and (2) Themes.
 // TODO: Add a Main Menu button to the Game screen.
 // TODO: Potential Idea: The closer (or farther?) from the middle of the circle you click/tap, the more points you get.
+// TODO: Fix the bug where testing on an iPhone 5s reveals that there is a delay when tapping a circle before it disappears.
 
 // TODO: Fix the bug where testing on an iPhone 5s reveals that you can scroll up and down a little bit.
 // TODO: Fix the cosmetic issue where the Main Menu buttons slightly overlap.
