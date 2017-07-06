@@ -2,6 +2,8 @@
 // TODO: After game statistics should include (1) High Score, (2) Current Score, and (3) Number of Inaccurate Taps.
 // TODO: Statistics at the main menu should include (1) Total Number of Successful Taps, (2) Total Number of Inaccurate Taps, (3) Total Time Played, (4) High Score, and (5) Total Number of Rounds Played.
 // TODO: Rewards tab at the main menu should include (1) Songs and (2) Themes.
+// TODO: Add a Main Menu button to the Game screen.
+// TODO: Potential Idea: The closer (or farther?) from the middle of the circle you click/tap, the more points you get.
 
 var canvas = document.querySelector("#myCanvas");
 var canvasWidth = canvas.width;
@@ -119,7 +121,7 @@ hardModeButton.addEventListener('click', function() {
 // TODO: Fix the speed issue when the start button is pressed multiple times.
 var SPEED_REFERENCE = 1;
 function Circle() {
-    this.radius = Math.random()*200 + 50; // Minimum: 50, Maximum: 250
+    this.radius = Math.random()*canvasHeight/4 + 50;
     this.speed = SPEED_REFERENCE;
     this.outlineRadius = this.radius + 100 + 30*this.speed;
     this.position = {
