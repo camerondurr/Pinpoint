@@ -12,9 +12,6 @@ var canvas = document.querySelector("#myCanvas");
 var canvasWidth = canvas.width;
 var canvasHeight = canvas.height;
 
-var buttonWidth = 100;
-var buttonHeight = 50;
-
 var letterSpacing = 10;
 var letterSpacingChangeSpeed = 0.05;
 var letterSpacingMaximum = 20;
@@ -42,19 +39,23 @@ statisticsButton.style.top = startingPoint + 30 + "%";
 var optionsButton = document.getElementById("optionsButton");
 optionsButton.style.top = startingPoint + 40 + "%";
 
+var buttonWidth = 100;
+var buttonHeight = 50;
+
 var startButton = document.getElementById("startButton");
-startButton.style.width = buttonWidth + "px";
-startButton.style.height = buttonHeight + "px";
-startButton.style.border = "1px solid black";
-startButton.style.position = "absolute";
-startButton.style.fontSize = "20px";
-startButton.style.backgroundColor = "#FFFFFF";
-startButton.innerHTML = "Start";
 startButton.addEventListener('mouseover', function() {
     startButton.style.backgroundColor = "#00FF00";
 }, false);
 startButton.addEventListener('mouseout', function() {
     startButton.style.backgroundColor = "#FFFFFF";
+}, false);
+var backButton = document.getElementById("backButton");
+backButton.style.left = buttonWidth + 10 + "px";
+backButton.addEventListener('mouseover', function() {
+    backButton.style.backgroundColor = "#FF0000";
+}, false);
+backButton.addEventListener('mouseout', function() {
+    backButton.style.backgroundColor = "#FFFFFF";
 }, false);
 
 var score = 0;
@@ -109,6 +110,7 @@ function mainMenuToGameTransition() {
 
     canvas.style.display = "inherit";
     startButton.style.display = "inherit";
+    backButton.style.display = "inherit";
     scoreboard.style.display = "inherit";
     livesDiv.style.display = "inherit";
 }
@@ -119,6 +121,25 @@ normalModeButton.addEventListener('click', function() {
 hardModeButton.addEventListener('click', function() {
     mainMenuToGameTransition();
     // TODO: The player should be given one life.
+}, false);
+
+function gameToMainMenuTransition() {
+    canvas.style.display = "none";
+    startButton.style.display = "none";
+    backButton.style.display = "none";
+    scoreboard.style.display = "none";
+    livesDiv.style.display = "none";
+
+    title.style.display = "inherit";
+    normalModeButton.style.display = "inherit";
+    hardModeButton.style.display = "inherit";
+    rewardsButton.style.display = "inherit";
+    statisticsButton.style.display = "inherit";
+    optionsButton.style.display = "inherit";
+}
+// TODO: Fix the bug where the player leaves and comes back to circles that are already going.
+backButton.addEventListener('click', function() {
+    gameToMainMenuTransition();
 }, false);
 
 // TODO: Fix the speed issue when the start button is pressed multiple times.
